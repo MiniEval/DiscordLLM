@@ -1,0 +1,8 @@
+{
+  "format": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{{char}}'s persona: {{persona}}\n\nProduce a summary of facts from the following conversation. The summary should assist {{char}} in responding appropriately given her above persona. The summary should only contain facts that are relevant to the Input. Do not try to attempt to continue the conversation directly. Do not simply repeat the existing conversation. The response must be in essay form and must not be in conversation form, and written exclusively in third person.\n{{chat}}\n\n### Response:\n",
+  "persona_sub": "{{persona}}",
+  "char_sub": "{{char}}",
+  "chat_sub": "{{chat}}",
+  "input_prefix": "\n",
+  "response_prefix": "\n"
+}

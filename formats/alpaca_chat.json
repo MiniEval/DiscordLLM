@@ -1,0 +1,10 @@
+{
+  "format": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n{{persona}}\n\nSummary of current conversation: {{summary}}\n\n{{context}}\n\nThe input below this line provides the most recent messages from the chat.\n\n{{chat}}\n\n### Response:\n",
+  "context_sub": "{{context}}",
+  "persona_sub": "{{persona}}",
+  "char_sub": "{{char}}",
+  "chat_sub": "{{chat}}",
+  "summary_sub": "{{summary}}",
+  "input_prefix": "### Input:\n",
+  "response_prefix": "### Response:\n"
+}
