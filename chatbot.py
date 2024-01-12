@@ -30,6 +30,7 @@ class Chatbot:
         # Admins & channel arguments are never reloaded for safety & sync reasons
         self.admins = self.args["admins"]
         self.channel = self.args["channel_id"]
+        self.bot_token = self.args["bot_token"]
 
         self.message_history = deque()
         self.reset_message_history()
@@ -314,4 +315,4 @@ if __name__ == "__main__":
                     await channel.send(chatbot.next_message)
                     chatbot.next_message = None
 
-    bot.run("MTE3NTQxODcwNjY1OTExNTAxOA.G6Cbjr.JSAHTfKPnOK1jJkrsNEPECaqQd82cWcvj8bjaM")
+    bot.run(chatbot.bot_token)
