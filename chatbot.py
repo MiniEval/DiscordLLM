@@ -168,6 +168,7 @@ class Chatbot:
 
         # Disallow the response to include "User: " for existing user names. May result in empty evaluations.
         stop_names = [name + ":" for name in self._get_names()]
+        stop_names.remove("%s:" % self.name)
 
         # SUMMARY REQUEST
         # Only begin using summary when >8 messages. Most LLMs don't have repetition issues before that.
