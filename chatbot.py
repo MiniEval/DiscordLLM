@@ -18,7 +18,7 @@ class Chatbot:
     def __init__(self, config_file, llm_host="localhost:5000"):
         self.llm_host = f"http://{llm_host}/v1/completions"
         try:
-            self.sp = sentencepiece.SentencePieceProcessor(model_file='./bruh.model')
+            self.sp = sentencepiece.SentencePieceProcessor(model_file='./tokenizer.model')
         except OSError:
             print("ERROR: \ttokeniser.model file not found. Include the tokenizer.model file of your LLM in the same folder as this .py file.")
             print("\tFor GGUF users, look for the original model repository (pre-GGUF quantisation).")
