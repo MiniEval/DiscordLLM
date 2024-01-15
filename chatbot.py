@@ -91,12 +91,13 @@ class Chatbot:
         self.chat_params = dict(self.args["chat_params"])
         self.summary_params = dict(self.args["summary_params"])
 
-        self.args["banned_substrings_full"] = list(self.args["banned_substrings"])
-        self.args["banned_substrings_full"].append(self.chat_sub)
-        self.args["banned_substrings_full"].append(self.summary_sub)
-        self.args["banned_substrings_full"].append(self.input_prefix)
-        self.args["banned_substrings_full"].append(self.response_prefix)
-        self.args["banned_substrings_full"].append(self.summary_chat_sub)
+        self.args["banned_substrings_full"] = set(self.args["banned_substrings"])
+        self.args["banned_substrings_full"].add(self.chat_sub)
+        self.args["banned_substrings_full"].add(self.summary_sub)
+        self.args["banned_substrings_full"].add(self.input_prefix)
+        self.args["banned_substrings_full"].add(self.response_prefix)
+        self.args["banned_substrings_full"].add(self.summary_chat_sub)
+        self.args["banned_substrings_full"].remove("")
 
         self.sanitiser = Sanitiser(self.name, self.args["banned_substrings_full"])
 
@@ -123,7 +124,7 @@ class Chatbot:
 
             message_outputs.append(msg_)
 
-            if summary is not None and len(self.message_history) > 8:
+            if summary is not None and len(message_outputs) > 8:
                 break
 
         # Remove excess message history (given max context length)
