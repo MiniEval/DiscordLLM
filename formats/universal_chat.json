@@ -1,0 +1,10 @@
+{
+  "format": "### Instruction:\n{{char}}'s persona: {{persona}}\n\nWrite a fictional never-ending conversation between {{char}} and various conversation partners in a Discord chat channel. Avoid repetition, don't loop. Develop the conversation slowly, and always stay in character, as provided by the character's persona.\n\n{{char}}'s messages should not contain extraneous actions or anything other than spoken dialogue. Do not describe the dialogue in a narrator style, such as ending dialogue in \"I say\", or \"I whisper\". Do not include emojis or gestures in the {{char}}'s messages. Start all messages with the character name in the format of \"Name:\". Separate messages with double newlines.\n{{context}}\n\nThe conversation begins below this line.\n### New conversation:\n{{chat}}\n\n{{char}}:\n",
+  "context_sub": "{{context}}",
+  "persona_sub": "{{persona}}",
+  "char_sub": "{{char}}",
+  "chat_sub": "{{chat}}",
+  "summary_sub": "{{summary}}",
+  "input_prefix": "\n",
+  "response_prefix": "\n"
+}
