@@ -49,7 +49,7 @@ class Chatbot:
     def reset_message_history(self):
         self.message_history.clear()
         # Most LLMs seem to work better when given a starting message. Edit or remove this if you will.
-        self.message_history.appendleft("%s: Hello" % self.name)
+        self.message_history.appendleft("%s:\nHello" % self.name)
 
     def _count_tokens(self, prompt):
         prompt_tokens = self.sp.encode_as_ids(prompt)
