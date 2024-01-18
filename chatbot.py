@@ -35,9 +35,6 @@ class Chatbot:
         self.message_history = deque()
         self.reset_message_history()
 
-        # Most LLMs seem to work better when given a starting message. Edit or remove this if you will.
-        self.message_history.appendleft("%s: Hello" % self.name)
-
         self.request_mutex = threading.Lock()
         self.request_thread = None
         self.next_message = None
@@ -96,8 +93,10 @@ class Chatbot:
         self.args["banned_substrings_full"].add(self.summary_sub)
         self.args["banned_substrings_full"].add(self.input_prefix)
         self.args["banned_substrings_full"].add(self.response_prefix)
-        self.args["banned_substrings_full"].add(self.summary_chat_sub)
-        self.args["banned_substrings_full"].remove("")
+        if "summary_format" in self.args:
+            self.args["banned_substrings_full"].add(self.summary_chat_sub)
+        self.args["banned_substrings_full"].discard("")
+        self.args["banned_substrings_full"].discard("\n")
 
         self.sanitiser = Sanitiser(self.name, self.args["banned_substrings_full"])
 
@@ -112,8 +111,9 @@ class Chatbot:
         n_tokens = 0
         for msg in self.message_history:
             if msg.startswith("%s:" % self.name):
-                msg_ = msg[len("%s: " % self.name):]
-                msg_ = self.response_prefix + msg_
+                # msg_ = msg[len("%s: " % self.name):]
+                # msg_ = self.response_prefix + msg_
+                msg_ = self.response_prefix + msg
             else:
                 msg_ = self.input_prefix + msg
 
@@ -173,7 +173,7 @@ class Chatbot:
 
         # SUMMARY REQUEST
         # Only begin using summary when >8 messages. Most LLMs don't have repetition issues before that.
-        if len(self.message_history) > 8:
+        if len(self.message_history) > 8 and self.summary_format is not None:
             summary_prompt = self._create_summary_prompt()
             body = dict(self.summary_params)
             body["prompt"] = summary_prompt
@@ -317,4 +317,5 @@ if __name__ == "__main__":
                     await channel.send(chatbot.next_message)
                     chatbot.next_message = None
 
+    # chatbot.get_next_message()
     bot.run(chatbot.bot_token)
