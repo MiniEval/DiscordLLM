@@ -11,4 +11,5 @@
  - [discord.py](https://github.com/Rapptz/discord.py)
  - [emoji](https://github.com/carpedm20/emoji/)
  - [sentencepiece](https://github.com/google/sentencepiece)
+ - [requests](https://github.com/psf/requests)
  - Recommended for local LLM API: [text-generation-webui](https://github.com/oobabooga/text-generation-webui)
