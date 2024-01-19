@@ -1,5 +1,5 @@
 # DiscordLLM
- Simple LLM bridge between OpenAI-based APIs and Discord's bot API. Comes with built-in summarisation functionality to prevent loops.
+ Simple LLM bridge between Ooba API (or OpenAI-based APIs) and Discord's bot API. Comes with built-in summarisation functionality to prevent loops.
  
  Usage: `python chatbot.py -c [Character config file] -s [LLM API IP:Port]`
 
